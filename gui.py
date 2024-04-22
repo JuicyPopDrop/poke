@@ -15,6 +15,8 @@ def main(root):
     )
     canvas.place(x=0, y=0)
     
-    buttons.main(root)
+    db = None
+
+    buttons.main(root,db)
 
     
