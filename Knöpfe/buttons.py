@@ -8,7 +8,8 @@ Typen = ["Typen",
          "Kampf","Eis","Psycho","Geist","Drache",
          "Unlicht","Stahl","Fee",]
 
-Erweiterungen = ["---Karmesin & Purpur---",
+Erweiterungen = ["Erweiterung wählen",
+                 "---Karmesin & Purpur---",
                  "Maskerade im Zwielicht","Gewalten der Zeit","Paldeas Schicksale","Paradoxrift","151","Obisidianflammen","Entwicklungen in Paldea","Karmesin & Purpur",
                  "---Schwert & Schild---",
                  "Zenit der Könige","Silberne Sturmwinde","Verlorener Ursprung","Pokemon Go","Astralglanz","Strahlende Sterne","Celebrations","Fusionsangriff","Drachenwandel","Schaurige Herrschaft","Kampfstile","Glänzendes Schicksal","Farbenschock","Weg des Champs","Flammende Finsternis","Clash der Rebellen","Schwert & Schild",
