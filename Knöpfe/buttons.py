@@ -1,6 +1,9 @@
 import customtkinter as cTk
 from CTkListbox import * 
 from PIL import Image
+from Datenbank import dbFile
+from tkinter.messagebox import showinfo, showerror
+
 
 Typen = ["Typen",
         "Normal","Feuer","Wasser","Elektro","Pflanze",
@@ -36,10 +39,36 @@ Erweiterungen = ["Erweiterung wählen",
                  "---Promos und Specials",
                  "Wizards Black Star Promos","Nintendo Black Star Promos","DP Black Star Promos","HGSS Black Star Promos","BW Black Star Promos","XY Black Star Promos","SM Black Star Promos","SWSH Black Star Promos","SV Blackstar Promos","Southern Island Collection","POP-Series","Pokemon Rumble","Meisterdetektiv Pickachu","Lets Play-Themendecks","25. Jubiläum-Kollektion","McDonald's Serie 2011","McDonald's Serie 2018","McDonald's Serie 2019","McDonald's Serie 2021","McDonald's Serie 2022","McDonald's Serie 2023"]
 
-def main(canvas,db):
+def main(canvas, db):  
+    database = dbFile.Datenbank("Datenbank\dbFile.py")
 
-    def addPokemon(Erweiterung,Nummer,Name,Typ,Condition):
-        db.addPokemonDB(Erweiterung,Nummer,Name,Typ,Condition)
+    def addPokemon(Name, Nummer, Typ, Erweiterung):
+        if Name and Nummer and Typ and Erweiterung:
+
+            bestätigung = f"Du fügst hinzu:\nName: {Name}\nNummer: {Nummer}\nTyp: {Typ}\nErweiterung: {Erweiterung}"
+
+            showinfo("Bestätigung", bestätigung)
+
+            Zustand = ""
+            if NonHoloCheck_var.get() == "on":
+                Zustand += "Non Holo, "
+            if ReverseHoloCheck_var.get() == "on":
+                Zustand += "Reverse Holo, "
+            if HoloCheck_var.get() == "on":
+                Zustand += "Holo, "
+            if GoldCheck_var.get() == "on":
+                Zustand += "Gold, "
+            if RainbowCheck_var.get() == "on":
+                Zustand += "Rainbow, "
+
+            Zustand = Zustand.rstrip(", ")
+
+            database.addPokemonDB(Erweiterung, Nummer, Name, Typ, Zustand)
+
+            showinfo("Erfolg", "Das Pokémon wurde erfolgreich hinzugefügt!")
+        else:
+            showerror("Fehler", "Bitte fülle alle Felder aus!")
+
 
     my_image = cTk.CTkImage(dark_image=Image.open("Assets/blanko_karte.png"),
                             size = (800,600))

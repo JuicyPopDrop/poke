@@ -1,6 +1,7 @@
 import customtkinter as cTk
 from Knöpfe import buttons
 from tkinter import Tk, Frame, Canvas, Entry, Text, Button, PhotoImage
+from Datenbank import dbFile  
 
 def main(root):
     
@@ -15,8 +16,11 @@ def main(root):
     )
     canvas.place(x=0, y=0)
     
-    db = None
+    
+    db = dbFile 
+    
+    buttons.main(root, db)  
 
-    buttons.main(root,db)
+    root.mainloop()
 
     

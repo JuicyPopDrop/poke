@@ -4,39 +4,49 @@ import pandas as pd
 OUTPUT_PATH = Path(__file__).parent
 
 
+class Datenbank:
+    def __init__(self, db_path):
+        self.db_path = db_path
+
+    def erweiterung_existiert(self, Erweiterung):
+        connection = sqlite3.connect(self.db_path)
+        cursor = connection.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (Erweiterung,))
+        result = cursor.fetchone()
+        connection.close()
+        return result is not None
+    
+    def addPokemonDB(self, Erweiterung, Nummer, Name, Typ, Zustand):
+        connection = sqlite3.connect(self.db_path)
+        cursor = connection.cursor()
+        cursor.execute(f"INSERT INTO {Erweiterung} values({Nummer},{Name},{Typ},{Zustand}")
+        connection.commit()
+        connection.close()
 
 
-def addPokemonDB(Erweiterung,Nummer,Name,Typ,Condition):
-    connection = sqlite3.connect(OUTPUT_PATH / "Sammlung.db")
-    cursor = connection.cursor()
-    cursor.execute(
-        f"Insert into {Erweiterung} values('{Nummer}','{Name}','{Typ}','{Condition}')"
-    )
-    connection.commit()
+    def addErweiterung(self, Erweiterung):
+        connection = sqlite3.connect(self.db_path)
+        cursor = connection.cursor()
+        cursor.execute(
+            f"CREATE TABLE IF NOT EXISTS {Erweiterung} (Nummer INT, Name VARCHAR, Typ VARCHAR, Zustand VARCHAR)"
+        )
+        connection.commit()
+        connection.close()
+        
+    def getErweiterungDB(self, Erweiterung):
+        connection = sqlite3.connect(self.db_path)
+        cursor = connection.cursor()
+        cursor.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name=?", (Erweiterung,)
+        )
+        result = cursor.fetchone()
+        table_exists = result is not None
+        if table_exists:
+            print("Tabelle vorhanden")
+        else:
+            self.addErweiterung(Erweiterung)
+        connection.close()
 
-def addErweiterungDB(Erweiterung):
-    connection = sqlite3.connect(OUTPUT_PATH / "Sammlung.db")
-    cursor = connection.cursor()
-    cursor.execute(f"CREATE TABLE {Erweiterung}(Nummer INT,
-                                                Name VARCHAR,
-                                                Typ VARCHAR,
-                                                Condition VARCHAR)"
 
-    )
-    return connection.commit()
-
-def getErweiterungDB(Erweiterung):
-    connection = sqlite3.connect(OUTPUT_PATH / "Sammlung.db")
-    cursor = connection.cursor()
-    table_name = "ausgewählte Erweiterung"
-    cursor.execute("SHOW TABLES")
-
-    tables = cursor.fetchall()
-    table_exists = any(table[0] == table_name for table in tables)
-
-    if table_exists:
-        print("Table vorhanden")
-    else:
-        addErweiterungDB()
 
     
