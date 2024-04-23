@@ -28,7 +28,7 @@ Erweiterungen = ["Erweiterung wählen",
                  "Platin","Aufstieg der Rivalen","Ultimative Sieger","Arceus",
                  "---Diamant & Perl---",
                  "Diamant & Perl","Geheimnisvolle Schätze","Rätselhafte Wunder","Epische Begegnungen","Majestätischer Morgen","Erwachte Legenden","Sturmtief",
-                 "---EX--",
+                 "---EX---",
                  "EX Rubin & Saphir","EX Sandsturm","EX Drache","EX Team Magma vs. Team Aqua","EX Hidden Legends","EX Feuerrot und Blattgrün","EX Team Rocket Returns","EX Deoxys","EX Smaragd","EX Verborgene Mächte","EX Delta Species","EX Legend Maker","EX Holon Phantoms","EX Crystal Guardians","EX Dragon Frontiers","EX Power Keepers",
                  "---e-Card-Serie---",
                  "Expedition","Aquapolis","Skyridge",
@@ -36,11 +36,11 @@ Erweiterungen = ["Erweiterung wählen",
                  "Neo Genesis","Neo Entdeckung","Neo Revelation","Neo Destiny","Legendary Collection",
                  "---Basis-Serie---",
                  "Basis-Set","Dschungel","Fossil","Base Set 2","Team Rocket","Gym Heroes","Gym Challenge",
-                 "---Promos und Specials",
+                 "---Promos und Specials---",
                  "Wizards Black Star Promos","Nintendo Black Star Promos","DP Black Star Promos","HGSS Black Star Promos","BW Black Star Promos","XY Black Star Promos","SM Black Star Promos","SWSH Black Star Promos","SV Blackstar Promos","Southern Island Collection","POP-Series","Pokemon Rumble","Meisterdetektiv Pickachu","Lets Play-Themendecks","25. Jubiläum-Kollektion","McDonald's Serie 2011","McDonald's Serie 2018","McDonald's Serie 2019","McDonald's Serie 2021","McDonald's Serie 2022","McDonald's Serie 2023"]
 
 def main(canvas, db):  
-    database = dbFile.Datenbank("Datenbank\dbFile.py")
+    database = ("Datenbank/Sammlung.db")
 
     def addPokemon(Name, Nummer, Typ, Erweiterung):
         if Name and Nummer and Typ and Erweiterung:
