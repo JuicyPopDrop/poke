@@ -14,10 +14,10 @@ class Datenbank:
         connection.close()
         return result is not None
     
-    def addPokemonDB(self, Erweiterung, Nummer, Name, Typ, Zustand):
+    def addPokemonDB(Erweiterung, Nummer, Name, Typ, Zustand):
         connection = sqlite3.connect("Datenbank/Sammlung.db")
         cursor = connection.cursor()
-        cursor.execute(f"INSERT INTO {Erweiterung} values({Nummer},{Name},{Typ},{Zustand})")
+        cursor.execute(f"INSERT INTO '{Erweiterung}' values({Nummer},'{Name}','{Typ}','{Zustand}')")
         connection.commit()
         connection.close()
 

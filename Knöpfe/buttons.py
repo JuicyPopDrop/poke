@@ -39,9 +39,8 @@ Erweiterungen = ["Erweiterung wählen",
                  "---Promos und Specials---",
                  "Wizards Black Star Promos","Nintendo Black Star Promos","DP Black Star Promos","HGSS Black Star Promos","BW Black Star Promos","XY Black Star Promos","SM Black Star Promos","SWSH Black Star Promos","SV Blackstar Promos","Southern Island Collection","POP-Series","Pokemon Rumble","Meisterdetektiv Pickachu","Lets Play-Themendecks","25. Jubiläum-Kollektion","McDonald's Serie 2011","McDonald's Serie 2018","McDonald's Serie 2019","McDonald's Serie 2021","McDonald's Serie 2022","McDonald's Serie 2023"]
 
-def main(canvas, db):  
-    database = ("Datenbank/Sammlung.db")
-
+def main(canvas, dbFile):  
+    
     def addPokemon(Name, Nummer, Typ, Erweiterung):
         if Name and Nummer and Typ and Erweiterung:
 
@@ -63,7 +62,7 @@ def main(canvas, db):
 
             Zustand = Zustand.rstrip(", ")
 
-            database.addPokemonDB(Erweiterung, Nummer, Name, Typ, Zustand)
+            dbFile.Datenbank.addPokemonDB(Erweiterung, Nummer, Name, Typ, Zustand)
 
             showinfo("Erfolg", "Das Pokémon wurde erfolgreich hinzugefügt!")
         else:
