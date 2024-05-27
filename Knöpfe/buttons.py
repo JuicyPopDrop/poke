@@ -3,7 +3,7 @@ from CTkListbox import *
 from PIL import Image
 from Datenbank import dbFile
 from tkinter.messagebox import showinfo, showerror
-
+from CTkListbox import *
 
 Typen = ["Typen",
         "Normal","Feuer","Wasser","Elektro","Pflanze",
@@ -196,3 +196,8 @@ def main(canvas, dbFile):
                                                                 TypListe.get(),
                                                                 ErweiterungListe.get()),)
     HinzufügenButton.place(x=325,y=510)
+
+    
+
+    
+    

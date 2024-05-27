@@ -74,6 +74,22 @@ def showTables():
 
     connection.close()
 
+def kartenzeigen():
+    conn = sqlite3.connect('deine_datenbank.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
+    tables = cursor.fetchall()
+
+    for table in tables:
+        table_name = table[0]
+        cursor.execute(f"SELECT COUNT(*) FROM {table_name}")
+        count = cursor.fetchone()[0]
+        if count > 0:
+            print(table_name)
+    conn.close()
+
+
+
    
 
 
