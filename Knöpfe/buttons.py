@@ -4,7 +4,7 @@ from PIL import Image
 from Datenbank import dbFile
 from tkinter.messagebox import showinfo, showerror
 from CTkListbox import *
-from Knöpfe import pokedex_anzeige
+from .pokedex_anzeige import pokedex_anzeigen
 
 Typen = ["Typen",
         "Normal","Feuer","Wasser","Elektro","Pflanze",
@@ -13,6 +13,7 @@ Typen = ["Typen",
          "Unlicht","Stahl","Fee",]
 
 Erweiterungen = ["Erweiterung wählen",
+                 "Test",
                  "---Karmesin & Purpur---",
                  "Maskerade im Zwielicht","Gewalten der Zeit","Paldeas Schicksale","Paradoxrift","151","Obisidianflammen","Entwicklungen in Paldea","Karmesin & Purpur",
                  "---Schwert & Schild---",
@@ -69,13 +70,8 @@ def main(canvas, dbFile):
         else:
             showerror("Fehler", "Bitte fülle alle Felder aus!")
 
-    def pokedex_anzeigen():
-        pokedex = cTk.CTk()
-        pokedex.title("Deine Karten")
-        pokedex.geometry("800x600")
-        pokedex.resizable(width=0, height=0)
-        pokedex.configure(background='#2a75bb')
-        pokedex.mainloop()
+    
+        
 
     my_image = cTk.CTkImage(dark_image=Image.open("Assets/blanko_karte.png"),
                             size = (800,600))
@@ -85,7 +81,7 @@ def main(canvas, dbFile):
     blankoKarte.place(x=0, y=0)
     
     Überschrift = cTk.CTkButton(canvas, text="Pokedex",
-                                        command =  pokedex_anzeigen,
+                                        command = lambda: pokedex_anzeigen(),
                                         corner_radius=0,
                                         fg_color="#2a75bb", text_color="#ffcb05", 
                                         bg_color="#2a75bb", font=("Pokemon Solid", 20),
