@@ -12,18 +12,22 @@ def pokedex_anzeigen():
     Erweiterungen = dbFile.showfilledTables()
     count = 0
 
-    listbox = CTkListbox(pokedex,
+    Erweiterungsliste = CTkListbox(pokedex,
                          width = 400, height = 600,
                          command = 0)
-    listbox.place(x = 0, y = 0)
+    Erweiterungsliste.place(x = 0, y = 0)
     
     for x in Erweiterungen:
-        listbox.insert(count, x[0])
+        Erweiterungsliste.insert(count, x[0])
         count += 1
 
+    def ErweiterungAuswahl():
+        Kartenliste = CTkListbox(pokedex,
+                                 width = 400, height = 600,
+                                 command = 0)
+        Kartenliste.place(x = 400, y = 0)
     
-    
-    
+    ErweiterungAuswahl = Kartenliste[Erweiterungsliste.curselection()]
     
     
     

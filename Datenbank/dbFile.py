@@ -78,7 +78,8 @@ def showTables():
     tables = cursor.fetchall()
     print("Vorhandene Tabellen:")
     for table in tables:
-        print(table[0])
+        #print(table[0])
+        continue
 
     connection.close()
     return(tables)
