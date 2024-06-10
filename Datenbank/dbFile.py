@@ -113,6 +113,17 @@ def showfilledTables():
             tables.append([x[0],table])
     return tables
     
+def getCardsFromTable(table_name):
+    connection = sqlite3.connect('Datenbank/Sammlung.db')
+    cursor = connection.cursor()
+    cursor.execute(f"""SELECT * FROM "{table_name}" """)
+    cards = cursor.fetchall()
+    connection.close()
+    return cards
+
+
+
+
 #conn = sqlite3.connect('Datenbank/Sammlung.db')
 #cursor = conn.cursor()
 
