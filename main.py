@@ -2,7 +2,7 @@ import gui
 import customtkinter as cTk
 from PIL import Image
 
-Gengar_Icon = ("Assets/gengar_icon.png")
+Gengar_Icon = ("Assets/gengar_icon.ico")
                             
 
 root = cTk.CTk()
